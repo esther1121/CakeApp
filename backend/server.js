@@ -6,6 +6,7 @@ import userRouter from "./routes/userRoute.js"
 import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+import { configDotenv } from "dotenv"
 
 //app config
 const app = express()
@@ -13,7 +14,27 @@ const port = process.env.PORT || 4000;
 
 //middleware
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
+
+const allowedOrigins = [
+    'https://e-commerce-frontend-t6kw.onrender.com',
+    'https://e-commerce-admin-vzrh.onrender.com'
+  ];
+ 
+  // Enable CORS for the allowed origins
+  app.use(cors({
+    origin: function(origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) {
+        // Allow the request if the origin is in the allowedOrigins array
+        callback(null, true);
+      } else {
+        // Reject the request if the origin is not allowed
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+  }));
 
 //db connection
 connectDB();
@@ -26,7 +47,7 @@ app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 
 
-app.get("/",(req,res)=>{
+app.get("/api/res",(req,res)=>{
     res.send("API Working")
 })
 

@@ -5,9 +5,11 @@ import { toast } from "react-toastify"
 
 const List = ({url}) => {
 
-  const [List,setList] = useState([]);
+  const [list,setList] = useState([]);
+  console.log()
   const fetchList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
+    console.log(response)
     if(response.data.success) {
       setList(response.data.data);
     }
@@ -39,10 +41,10 @@ fetchList();
           <b>Price</b>
           <b>Action</b>
         </div>
-        {List.map((item,index)=>{
+        {list.map((item,index)=>{
           return (
             <div key={index} className='list-table-format'>
-            <img src={`${url}/images/`+item.image} alt="" />
+            <img src={`${url}/images/${item.image}`} alt="" />
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>Rs.{item.price}</p>

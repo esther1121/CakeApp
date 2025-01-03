@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './MyOrders.css'
-import { StoreContext } from '../../context/Storecontext'
+import { StoreContext } from '../../context/StoreContext'
 import { assets } from '../../assets/assets'
 import { url } from '../../../../admin/src/assets/assets'
+import axios from 'axios';
 
 const MyOrders = () => {
 
@@ -13,6 +14,12 @@ const MyOrders = () => {
         const response = await axios.post(url+"/api/order/userOrders",{},{headers:{token}});
         setData(response.data.data);
     }
+
+    useEffect(() => {
+        if(token) {
+            fetchOrders();
+        }
+    },[token])
 
   return (
     <div className='my-orders'>

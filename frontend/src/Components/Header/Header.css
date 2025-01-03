@@ -1,7 +1,7 @@
 .header{
     height: 34vw;
     margin: 30px;
-    background: url('../../assets/banner.png') no-repeat;
+    background: url('../../assets/newbanner.svg') no-repeat;
     background-size: contain;
     position: relative;
 }
@@ -17,17 +17,17 @@ left: 6vw;
 }
 .header-contents h2{
     font-weight: 500;
-    color: white;
+    color:  #fc5a8d;
     font-size: max(4.5vw, 22px);
     animation: fadeIn 3s;
 }
 .header-contents p{
-    color: white;
+    color: #fc5a8d;
     font-size: 1vw;
 }
 .header-contents button{
-    border: none;
-    color: #747474;
+    border: 2px solid black;
+    color:  black;
     font-weight: 500;
     padding: 1vw 2.3vw;
     background-color: white;

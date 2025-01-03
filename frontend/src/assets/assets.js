@@ -1,6 +1,6 @@
 import basket_icon from './basket_icon.png'
 import logo from './logo.png'
-import header_img from './banner.png'
+import header_img from './cakebanner.png'
 import search_icon from './search_icon.png'
 import menu_1 from './Theme1.png'
 import menu_2 from './BD Cake.png'
